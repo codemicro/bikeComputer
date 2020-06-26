@@ -98,10 +98,9 @@ im2 = grow_to_display_footprint(im2, background=0)
 
 
 while True:
+    # Note to self - add delays in the final one
     disp.show_image(im1)
-    time.sleep(0.5)
     disp.show_image(im2)
-    time.sleep(0.5)
 
 
 # This will be useful later on
