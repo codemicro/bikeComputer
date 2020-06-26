@@ -4,6 +4,8 @@ import math
 with open("../settings.json") as f:
     loaded_settings = json.load(f)
 
+VERSION = "0.0.0"
+
 # Constants for assets
 ASSET_UBUNTU_MONO = "../assets/UbuntuMono.ttf"
 
