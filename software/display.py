@@ -17,9 +17,9 @@ class Display:
         self.disp.fill(0)
         self.disp.show()
 
-    def clear(self):
+    def clear(self, inverted=False):
         d = Drawing(self)
-        d.draw.rectangle((0, 0, self.width, self.height), outline=0, fill=0)
+        d.draw.rectangle((0, 0, self.width, self.height), outline=0, fill=255 if inverted else 0)
         self.show_drawing(d)
 
     def show_image(self, im):
@@ -31,9 +31,12 @@ class Display:
 
 
 class Drawing:
-    def __init__(self, display):
+    def __init__(self, display, im=None):
         self.display = display
-        self.image = Image.new("1", (display.width, display.height))
+        if im is None:
+            self.image = Image.new("1", (display.width, display.height))
+        else:
+            self.image = im
         self.draw = ImageDraw.Draw(self.image)
 
     def show(self):
