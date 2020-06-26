@@ -87,8 +87,8 @@ def add_text_to_image(im, text, font, text_fill=255, text_on_top=True, gap=4):
 font_lg = ImageFont.truetype(ASSET_UBUNTU_MONO, 15)
 font_sm = ImageFont.truetype(ASSET_UBUNTU_MONO, 10)
 
-im1 = add_text_to_image(Image.open("../assets/loading_alt_1.png").convert("1"), "Loading...", font_lg)
-im2 = add_text_to_image(Image.open("../assets/loading_alt_2.png").convert("1"), "Loading...", font_lg)
+im1 = add_text_to_image(Image.open("../assets/loading_1.png").convert("1"), "Loading...", font_lg)
+im2 = add_text_to_image(Image.open("../assets/loading_2.png").convert("1"), "Loading...", font_lg)
 
 im1 = add_text_to_image(im1, "PiBike v" + VERSION, font_sm)
 im2 = add_text_to_image(im2, "PiBike v" + VERSION, font_sm)
