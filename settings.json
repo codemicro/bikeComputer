@@ -1,0 +1,8 @@
+{
+  "wheelDiameter": 27.1654,
+  "display": {
+    "i2cAddr": 60,
+    "width": 128,
+    "height": 64
+  }
+}
