@@ -39,3 +39,22 @@ def display_loop():
     d.image = helpers.center_image(d.image)
 
     m.disp.show_drawing(d)
+
+    # Main UI
+
+    d = Drawing(UI_RIGHT_SIDE_LIT)
+
+    text_drawing = Drawing()
+    text_drawing.draw.text((0, 0), "16.9", font=ASSET_UBUNTU_MONO_XL, fill=255)  # Speed
+    text_drawing.image = helpers.crop_whitespace(text_drawing.image)
+    text_drawing.image = helpers.add_text_to_image(text_drawing.image, "mph", ASSET_UBUNTU_MONO_ME, text_on_top=False)  # Label
+
+    text_x_size, text_y_size = text_drawing.image.size
+    text_x_pos = int(0.25 * DISPLAY_WIDTH) - int(0.5 * text_x_size)
+    text_y_pos = int(0.5 * (DISPLAY_HEIGHT - text_y_size))
+
+    text_drawing.image.save("thing.png")
+
+    d.image.paste(text_drawing.image, box=(text_x_pos, text_y_pos))
+
+    m.disp.show_drawing(d)

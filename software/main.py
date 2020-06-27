@@ -1,4 +1,7 @@
+import random
 import sys
+import threading
+import time
 
 import signal
 
@@ -14,9 +17,12 @@ def sigint_handler(_=None, __=None):
 
 signal.signal(signal.SIGINT, sigint_handler)
 
+display_thread = threading.Thread(target=loops.display_loop)
+display_thread.start()
 
-loops.loading_animation()
+time.sleep(1)
 
+m.ready = True
 
 # This will be useful later on
 # while True:

@@ -13,6 +13,7 @@ ASSET_UBUNTU_MONO_PATH = "../assets/UbuntuMono.ttf"
 ASSET_UBUNTU_MONO_SM = ImageFont.truetype(ASSET_UBUNTU_MONO_PATH, 10)
 ASSET_UBUNTU_MONO_ME = ImageFont.truetype(ASSET_UBUNTU_MONO_PATH, 15)
 ASSET_UBUNTU_MONO_LG = ImageFont.truetype(ASSET_UBUNTU_MONO_PATH, 20)
+ASSET_UBUNTU_MONO_XL = ImageFont.truetype(ASSET_UBUNTU_MONO_PATH, 25)
 
 # Constants for display information
 DISPLAY_HEIGHT = loaded_settings["display"]["height"]
@@ -29,3 +30,7 @@ ImageDraw.Draw(UI_BLANK_IMAGE).rectangle((0, 0, DISPLAY_WIDTH, DISPLAY_HEIGHT), 
 
 UI_INVERTED_BLANK_IMAGE = Image.new("1", (DISPLAY_WIDTH, DISPLAY_HEIGHT))
 ImageDraw.Draw(UI_BLANK_IMAGE).rectangle((0, 0, DISPLAY_WIDTH, DISPLAY_HEIGHT), outline=0, fill=0)
+
+UI_RIGHT_SIDE_LIT = Image.new("1", (DISPLAY_WIDTH, DISPLAY_HEIGHT))  # Right side of the image on
+ImageDraw.Draw(UI_RIGHT_SIDE_LIT).rectangle((int(0.5 * DISPLAY_WIDTH), 0, DISPLAY_WIDTH, DISPLAY_HEIGHT), fill=255,
+                                         outline=255)
