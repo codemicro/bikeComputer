@@ -55,7 +55,8 @@ def display_loop():
         text_x_pos = int(0.25 * DISPLAY_WIDTH) - int(0.5 * text_x_size)
         text_y_pos = int(0.5 * (DISPLAY_HEIGHT - text_y_size))
 
-        d.draw.rectangle((0, text_y_pos, int(0.5*DISPLAY_WIDTH)-1, text_y_pos+text_dims[1]), fill=0)  # -2 prevents margin being removed
+        # Remove remnants of previous numbers painted (-1 prevents part of the margin being removed)
+        d.draw.rectangle((0, text_y_pos, int(0.5*DISPLAY_WIDTH)-1, text_y_pos+text_dims[1]), fill=0)
 
         d.image.paste(text_drawing.image, box=(text_x_pos, text_y_pos))
 
