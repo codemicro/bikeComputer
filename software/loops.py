@@ -42,7 +42,7 @@ def display_loop():
 
     # Main UI
 
-    d = Drawing(UI_RIGHT_SIDE_LIT)
+    d = Drawing(UI_SPLIT_DISPLAY)
 
     text_drawing = Drawing()
     text_drawing.draw.text((0, 0), "16.9", font=ASSET_UBUNTU_MONO_XL, fill=255)  # Speed
@@ -52,8 +52,6 @@ def display_loop():
     text_x_size, text_y_size = text_drawing.image.size
     text_x_pos = int(0.25 * DISPLAY_WIDTH) - int(0.5 * text_x_size)
     text_y_pos = int(0.5 * (DISPLAY_HEIGHT - text_y_size))
-
-    text_drawing.image.save("thing.png")
 
     d.image.paste(text_drawing.image, box=(text_x_pos, text_y_pos))
 

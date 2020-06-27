@@ -31,6 +31,6 @@ ImageDraw.Draw(UI_BLANK_IMAGE).rectangle((0, 0, DISPLAY_WIDTH, DISPLAY_HEIGHT), 
 UI_INVERTED_BLANK_IMAGE = Image.new("1", (DISPLAY_WIDTH, DISPLAY_HEIGHT))
 ImageDraw.Draw(UI_BLANK_IMAGE).rectangle((0, 0, DISPLAY_WIDTH, DISPLAY_HEIGHT), outline=0, fill=0)
 
-UI_RIGHT_SIDE_LIT = Image.new("1", (DISPLAY_WIDTH, DISPLAY_HEIGHT))  # Right side of the image on
-ImageDraw.Draw(UI_RIGHT_SIDE_LIT).rectangle((int(0.5 * DISPLAY_WIDTH), 0, DISPLAY_WIDTH, DISPLAY_HEIGHT), fill=255,
-                                         outline=255)
+UI_SPLIT_DISPLAY = Image.new("1", (DISPLAY_WIDTH, DISPLAY_HEIGHT))  # Right side of the image on
+ImageDraw.Draw(UI_SPLIT_DISPLAY).rectangle((int(0.5 * DISPLAY_WIDTH), 0, int(0.5 * DISPLAY_WIDTH), DISPLAY_HEIGHT), fill=255,
+                                           outline=255)
