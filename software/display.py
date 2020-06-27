@@ -22,17 +22,18 @@ class Display:
         self.disp.fill(0)
         self.disp.show()
 
-    def clear(self, inverted:bool=False):
+    def clear(self, inverted:bool=False, release=True):
         if inverted:
             self.show_image(UI_INVERTED_BLANK_IMAGE)
         else:
             self.show_image(UI_BLANK_IMAGE)
 
-    def show_image(self, im:Image.Image):
+    def show_image(self, im:Image.Image, release:bool=True):
         self.lock.acquire()
         self.disp.image(im)
         self.disp.show()
-        self.lock.release()
+        if release:
+            self.lock.release()
 
     def show_drawing(self, drawing):
         self.show_image(drawing.image)

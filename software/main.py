@@ -11,18 +11,28 @@ from masterclass import m
 
 def sigint_handler(_=None, __=None):
     print("Attempting gracefully shutting down...")
+
+    # Make sure it actually clears
     m.disp.clear()
+    m.disp.clear()
+    m.disp.clear(release=False)
+
     sys.exit(0)
 
 
 signal.signal(signal.SIGINT, sigint_handler)
 
-display_thread = threading.Thread(target=loops.display_loop)
+display_thread = threading.Thread(target=loops.display_loop, daemon=True)
 display_thread.start()
+
+speed_thread = threading.Thread(target=loops.speed_monitor_loop, daemon=True)
+speed_thread.start()
 
 time.sleep(1)
 
 m.ready = True
+
+signal.pause()
 
 # This will be useful later on
 # while True:

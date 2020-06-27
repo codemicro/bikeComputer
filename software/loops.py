@@ -42,17 +42,41 @@ def display_loop():
 
     # Main UI
 
-    d = Drawing(UI_SPLIT_DISPLAY)
+    while True:
+        d = Drawing(UI_SPLIT_DISPLAY)
 
-    text_drawing = Drawing()
-    text_drawing.draw.text((0, 0), "16.9", font=ASSET_UBUNTU_MONO_XL, fill=255)  # Speed
-    text_drawing.image = helpers.crop_whitespace(text_drawing.image)
-    text_drawing.image = helpers.add_text_to_image(text_drawing.image, "mph", ASSET_UBUNTU_MONO_ME, text_on_top=False)  # Label
+        text_drawing = Drawing()
+        text_drawing.draw.text((0, 0), m.currentSpeed, font=ASSET_UBUNTU_MONO_XL, fill=255)  # Speed
+        text_drawing.image = helpers.crop_whitespace(text_drawing.image)
+        text_dims = text_drawing.image.size
+        text_drawing.image = helpers.add_text_to_image(text_drawing.image, "mph", ASSET_UBUNTU_MONO_ME, text_on_top=False)  # Label
 
-    text_x_size, text_y_size = text_drawing.image.size
-    text_x_pos = int(0.25 * DISPLAY_WIDTH) - int(0.5 * text_x_size)
-    text_y_pos = int(0.5 * (DISPLAY_HEIGHT - text_y_size))
+        text_x_size, text_y_size = text_drawing.image.size
+        text_x_pos = int(0.25 * DISPLAY_WIDTH) - int(0.5 * text_x_size)
+        text_y_pos = int(0.5 * (DISPLAY_HEIGHT - text_y_size))
 
-    d.image.paste(text_drawing.image, box=(text_x_pos, text_y_pos))
+        d.draw.rectangle((0, text_y_pos, int(0.5*DISPLAY_WIDTH)-1, text_y_pos+text_dims[1]), fill=0)  # -2 prevents margin being removed
 
-    m.disp.show_drawing(d)
+        d.image.paste(text_drawing.image, box=(text_x_pos, text_y_pos))
+
+        m.disp.show_drawing(d)
+
+        time.sleep(0.5)
+
+
+def speed_monitor_loop():
+    last_active = None
+
+    while True:
+        if m.reedSwitch.wait_for_press(timeout=SPEED_REED_TIMEOUT):
+            if last_active is None:
+                last_active = time.time()
+                m.currentSpeed = "0.00"
+            else:
+                speed = helpers.calculate_speed(time.time() - last_active)
+                last_active = time.time()
+                m.currentSpeed = str(speed)[:4]
+        else:
+                m.currentSpeed = "0.00"
+
+        m.reedSwitch.wait_for_release()

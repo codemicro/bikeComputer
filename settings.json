@@ -4,5 +4,8 @@
     "i2cAddr": 60,
     "width": 128,
     "height": 64
+  },
+  "pins": {
+    "reedSwitch": 22
   }
 }
