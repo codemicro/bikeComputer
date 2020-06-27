@@ -51,6 +51,17 @@ def crop_whitespace(im):
         return im
 
 
+def center_image(im:Image.Image) -> Image.Image:
+    """
+    Centers image in the middle of the screen
+
+    :param im: Image.Image
+    :return: Image.Image
+    """
+
+    return grow_to_display_footprint(crop_whitespace(im))
+
+
 def add_text_to_image(im: Image.Image, text: str, font: ImageFont.ImageFont, text_fill: int = 255,
                       text_on_top: bool = True,
                       gap: int = 4):
