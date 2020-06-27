@@ -14,7 +14,7 @@ Classes and functions related to display drawing/generation
 class Display:
     lock = threading.Lock()
 
-    def __init__(self, i2c_addr, disp_width, disp_height):
+    def __init__(self, i2c_addr:int, disp_width:int, disp_height:int):
         self.width = disp_width
         self.height = disp_height
 
@@ -22,13 +22,13 @@ class Display:
         self.disp.fill(0)
         self.disp.show()
 
-    def clear(self, inverted=False):
+    def clear(self, inverted:bool=False):
         if inverted:
             self.show_image(UI_INVERTED_BLANK_IMAGE)
         else:
             self.show_image(UI_BLANK_IMAGE)
 
-    def show_image(self, im):
+    def show_image(self, im:Image.Image):
         self.lock.acquire()
         self.disp.image(im)
         self.disp.show()
@@ -39,7 +39,7 @@ class Display:
 
 
 class Drawing:
-    def __init__(self, im=None):
+    def __init__(self, im:Image.Image=None):
         if im is None:
             self.image = Image.new("1", (DISPLAY_WIDTH, DISPLAY_HEIGHT))
         else:
