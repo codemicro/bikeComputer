@@ -1,15 +1,18 @@
 import json
 import math
 
-from PIL import Image, ImageDraw, ImageChops
+from PIL import Image, ImageDraw, ImageChops, ImageFont
 
 with open("../settings.json") as f:
     loaded_settings = json.load(f)
 
 VERSION = "0.0.0"
 
-# Constants for assets
-ASSET_UBUNTU_MONO = "../assets/UbuntuMono.ttf"
+# Constants for asset paths
+ASSET_UBUNTU_MONO_PATH = "../assets/UbuntuMono.ttf"
+ASSET_UBUNTU_MONO_SM = ImageFont.truetype(ASSET_UBUNTU_MONO_PATH, 10)
+ASSET_UBUNTU_MONO_ME = ImageFont.truetype(ASSET_UBUNTU_MONO_PATH, 15)
+ASSET_UBUNTU_MONO_LG = ImageFont.truetype(ASSET_UBUNTU_MONO_PATH, 20)
 
 # Constants for display information
 DISPLAY_HEIGHT = loaded_settings["display"]["height"]
