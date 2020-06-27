@@ -7,6 +7,10 @@ from masterclass import m
 
 
 def loading_animation():
+    """
+    Displays a loading animation
+    """
+
     font_lg = ImageFont.truetype(ASSET_UBUNTU_MONO, 15)
     font_sm = ImageFont.truetype(ASSET_UBUNTU_MONO, 10)
 
